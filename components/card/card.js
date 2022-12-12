@@ -14,7 +14,9 @@ export function createCharacterCard(element) {
 
   const createCardImageGradient = document.createElement("div");
   createCardImageGradient.classList.add("card__image-gradient");
-
+  
+  createImageContainer.append(createCardImage, createCardImageGradient);
+  
   const createCardContent = document.createElement("div");
   createCardContent.classList.add("card__content");
 
@@ -48,8 +50,13 @@ export function createCharacterCard(element) {
     const createCardOcurrencesDescription = document.createElement("dd");
     createCardOcurrencesDescription.classList.add("card__info-description");
     createCardOcurrencesDescription.textContent = `${element.location}`;
-    
 
-    
+createCardInfo.append(createCardTitle, createCardInfoDescription, createCardType, createCardTypeDescription, createCardOcurrences, createCardOcurrencesDescription);
+
+createCardContent.append(createCardHeader, createCardInfo);
+
+createList.append(createImageContainer, createCardContent);
+
+cardContainer.append(createList);
 
 }
