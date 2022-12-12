@@ -48,6 +48,7 @@ export function createCharacterCard(element) {
     const createCardOcurrencesDescription = document.createElement("dd");
     createCardOcurrencesDescription.classList.add("card__info-description");
     createCardOcurrencesDescription.textContent = `${element.location}`;
+    
 
     
 
