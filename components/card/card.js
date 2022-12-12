@@ -5,7 +5,7 @@ export function createCharacterCard(element) {
   createList.classList.add("card");
 
   const createImageContainer = document.createElement("div");
-  createImageContainer.classList.add.("card__image-container");
+  createImageContainer.classList.add("card__image-container");
 
   const createCardImage = document.createElement("img");
   createCardImage.classList.add("card_image");

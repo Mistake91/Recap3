@@ -1,3 +1,4 @@
+console.clear();
 // const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
@@ -12,3 +13,20 @@ const pagination = document.querySelector('[data-js="pagination"]');
 const maxPage = 1;
 const page = 1;
 const searchQuery = "";
+
+let fetchAPI = "https://rickandmortyapi.com/api/character"
+
+async function fetchCharacters (count=0) {
+  try {
+    if (count > 0) {
+      fetchAPI = fetchAPI + `/${count}`
+    }
+    const response = await fetch(fetchAPI);
+    const data = await response.json();
+    console.log(data)
+  } catch(error) {
+    console.error(error)
+  }
+}
+
+fetchCharacters(30)
