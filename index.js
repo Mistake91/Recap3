@@ -15,9 +15,9 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
-let count = 1
 let fetchAPI = "https://rickandmortyapi.com/api/character"
 let testData = null
+let count = 1
  export async function fetchCharacters () {
   try {
     if (count > 0) {
@@ -44,39 +44,6 @@ function getGlobalData(data) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-nextButton.addEventListener("click", () => {
-  if (count < 826) {
-    fetchAPI = "https://rickandmortyapi.com/api/character"
-    count++
-    fetchCharacters()
-    counter()
-} else {
-  return
-}
-})
-
-prevButton.addEventListener("click", () => {
-  if (count > 1) {
-    fetchAPI = "https://rickandmortyapi.com/api/character"
-    count--
-    fetchCharacters()
-    counter()
-   } else {
-    return
-   }
-})
-
 async function counter() {
   const apineiu = "https://rickandmortyapi.com/api/character/"
   const response = await fetch(apineiu);
@@ -85,3 +52,25 @@ async function counter() {
   }
   
   counter()
+  
+  nextButton.addEventListener("click", () => {
+    if (count < 826) {
+      fetchAPI = "https://rickandmortyapi.com/api/character"
+      count++
+      fetchCharacters()
+      counter()
+  } else {
+    return
+  }
+  })
+  
+  prevButton.addEventListener("click", () => {
+    if (count > 1) {
+      fetchAPI = "https://rickandmortyapi.com/api/character"
+      count--
+      fetchCharacters()
+      counter()
+     } else {
+      return
+     }
+  })

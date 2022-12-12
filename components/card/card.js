@@ -1,5 +1,6 @@
 const cardContainer = document.querySelector('[data-js="card-container"]');
 
+
 export function createCharacterCard(element) {
   cardContainer.innerHTML = '';
   const createList = document.createElement("li");
@@ -10,8 +11,8 @@ export function createCharacterCard(element) {
 
   const createCardImage = document.createElement("img");
   createCardImage.classList.add("card_image");
-  createCardImage.setAttribute = `src = ${element.image}`;
-  createCardImage.setAttribute = `alt = ${element.name}`;
+  createCardImage.src = `${element.image}`;
+  createCardImage.alt = `${element.name}`;
 
   const createCardImageGradient = document.createElement("div");
   createCardImageGradient.classList.add("card__image-gradient");
@@ -29,8 +30,8 @@ export function createCharacterCard(element) {
     createCardInfo.classList.add("card__info");
 
     const createCardTitle = document.createElement("dt");
-    createCardInfo.classList.add("card__info-title");
-    createCardInfo.textContent = "Status ";
+    createCardTitle.classList.add("card__info-title");
+    createCardTitle.textContent = "Status ";
 
     const createCardInfoDescription = document.createElement("dd");
     createCardInfoDescription.classList.add("card__info-description");
@@ -41,7 +42,7 @@ export function createCharacterCard(element) {
     createCardType.textContent = "Type ";
 
     const createCardTypeDescription = document.createElement("dd");
-    createCardTypeDescription.classList.add("card__info-title");
+    createCardTypeDescription.classList.add("card__info-description");
     createCardTypeDescription.textContent = `${element.type}`;
 
     const createCardOcurrences = document.createElement("dt");
@@ -50,7 +51,7 @@ export function createCharacterCard(element) {
 
     const createCardOcurrencesDescription = document.createElement("dd");
     createCardOcurrencesDescription.classList.add("card__info-description");
-    createCardOcurrencesDescription.textContent = `${element.location}`;
+    createCardOcurrencesDescription.textContent = `${element.episode.length}`;
 
 createCardInfo.append(createCardTitle, createCardInfoDescription, createCardType, createCardTypeDescription, createCardOcurrences, createCardOcurrencesDescription);
 
@@ -61,3 +62,4 @@ createList.append(createImageContainer, createCardContent);
 cardContainer.append(createList);
 
 }
+
