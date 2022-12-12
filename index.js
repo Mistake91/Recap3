@@ -11,8 +11,8 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 let pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-const maxPage = 1;
-const page = 1;
+// const maxPage = 1;
+// const page = 1;
 const searchQuery = "";
 
 let fetchAPI = "https://rickandmortyapi.com/api/character"
@@ -45,19 +45,15 @@ function getGlobalData(data) {
 
 
 
-export async function counter() {
+async function counter() {
   const apineiu = "https://rickandmortyapi.com/api/character/"
   const response = await fetch(apineiu);
       const data = await response.json();
       pagination.textContent = count + " / " + `${data.info.count}`
+      console.log(data)
   }
   
   counter()
-
-  searchBar.addEventListener("submit", (event) => {
-    event.preventDefault()
-    
-  })
 
   nextButton.addEventListener("click", () => {
     if (count < 826) {
@@ -79,4 +75,9 @@ export async function counter() {
      } else {
       return
      }
+  })
+
+  searchBar.addEventListener("submit", (event) => {
+    event.preventDefault()
+    
   })
