@@ -1,6 +1,7 @@
 const cardContainer = document.querySelector('[data-js="card-container"]');
 
 export function createCharacterCard(element) {
+  cardContainer.innerHTML = '';
   const createList = document.createElement("li");
   createList.classList.add("card");
 
