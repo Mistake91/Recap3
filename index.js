@@ -39,12 +39,13 @@ fetchCharacters()
 
 function getGlobalData(data) {
   testData = data
+  console.clear()
   console.log(testData)
 }
 
 
 
-async function counter() {
+export async function counter() {
   const apineiu = "https://rickandmortyapi.com/api/character/"
   const response = await fetch(apineiu);
       const data = await response.json();
@@ -52,7 +53,12 @@ async function counter() {
   }
   
   counter()
-  
+
+  searchBar.addEventListener("submit", (event) => {
+    event.preventDefault()
+    
+  })
+
   nextButton.addEventListener("click", () => {
     if (count < 826) {
       fetchAPI = "https://rickandmortyapi.com/api/character"
