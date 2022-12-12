@@ -1,4 +1,4 @@
-console.clear();
+// console.clear();
 import { createCharacterCard } from "./components/card/card.js";
 // const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -15,69 +15,70 @@ let pagination = document.querySelector('[data-js="pagination"]');
 // const page = 1;
 const searchQuery = "";
 
-let fetchAPI = "https://rickandmortyapi.com/api/character"
-let testData = null
-let count = 1
- export async function fetchCharacters () {
+const fetchAPI = "https://rickandmortyapi.com/api/character";
+
+let count = 1;
+export async function fetchCharacters() {
+  let newFetchAPI = null;
+  if (count > 0) {
+    newFetchAPI = fetchAPI + `/${count}`;
+    // console.log(newFetchAPI);
+  }
   try {
-    if (count > 0) {
-      fetchAPI = fetchAPI + `/${count}`
-    }
-    const response = await fetch(fetchAPI);
+    const response = await fetch(newFetchAPI);
     const data = await response.json();
-    getGlobalData(data)
-    createCharacterCard(data)
-  } catch(error) {
-    console.error(error)
+    createCharacterCard(data);
+  } catch (error) {
+    console.error(error);
   }
 }
 
-fetchCharacters()
-
-
-
-
-function getGlobalData(data) {
-  testData = data
-  console.clear()
-  console.log(testData)
-}
-
-
+fetchCharacters();
 
 async function counter() {
-  const apineiu = "https://rickandmortyapi.com/api/character/"
+  const apineiu = "https://rickandmortyapi.com/api/character/";
   const response = await fetch(apineiu);
-      const data = await response.json();
-      pagination.textContent = count + " / " + `${data.info.count}`
-      console.log(data)
-  }
-  
-  counter()
+  const data = await response.json();
+  pagination.textContent = count + " / " + `${data.info.count}`;
+  // console.log(data);
+}
 
-  nextButton.addEventListener("click", () => {
-    if (count < 826) {
-      fetchAPI = "https://rickandmortyapi.com/api/character"
-      count++
-      fetchCharacters()
-      counter()
+counter();
+
+nextButton.addEventListener("click", () => {
+  if (count < 826) {
+    count++;
+    fetchCharacters();
+    counter();
   } else {
-    return
+    return;
   }
-  })
-  
-  prevButton.addEventListener("click", () => {
-    if (count > 1) {
-      fetchAPI = "https://rickandmortyapi.com/api/character"
-      count--
-      fetchCharacters()
-      counter()
-     } else {
-      return
-     }
-  })
+});
 
-  searchBar.addEventListener("submit", (event) => {
-    event.preventDefault()
-    
-  })
+prevButton.addEventListener("click", () => {
+  if (count > 1) {
+    count--;
+    fetchCharacters();
+    counter();
+  } else {
+    return;
+  }
+});
+
+searchBar.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
+fetchName("Agency Director");
+
+async function fetchName(name) {
+  const newFetchAPI = fetchAPI + "/?name=" + name;
+  console.log(newFetchAPI);
+  try {
+    const response = await fetch(newFetchAPI);
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
